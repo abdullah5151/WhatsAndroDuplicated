@@ -11,15 +11,13 @@ const {MessageType,Mimetype} = require('@adiwajshing/baileys');
 const translatte = require('translatte');
 const config = require('../config');
 const LanguageDetect = require('languagedetect');
-const WhatsAsenaStack = require('whatsasena-npm');
+const WhatsAsenaStack = require('whatsdark-npm');
 const lngDetector = new LanguageDetect();
 const Heroku = require('heroku-client');
 const heroku = new Heroku({
     token: config.HEROKU.API_KEY
 });
 let baseURI = '/apps/' + config.HEROKU.APP_NAME;
-const exec = require('child_process').exec;
-const os = require("os");
 //============================== LYRICS =============================================
 const axios = require('axios');
 const { requestLyricsFor, requestAuthorFor, requestTitleFor, requestIconFor } = require("solenolyrics");
@@ -137,7 +135,7 @@ if (config.LANG == 'RU') {
 
 if (config.WORKTYPE == 'private') {
 
-    Asena.addCommand({pattern: 'trt(?: |$)(\\S*) ?(\\S*)', desc: Lang.TRANSLATE_DESC, usage: Lang.TRANSLATE_USAGE, fromMe: true}, (async (message, match) => {
+    Asena.addCommand({pattern: 'çevir(?: |$)(\\S*) ?(\\S*)', desc: Lang.TRANSLATE_DESC, usage: Lang.TRANSLATE_USAGE, fromMe: true}, (async (message, match) => {
 
         if (!message.reply_message) {
             return await message.client.sendMessage(message.jid,Lang.NEED_REPLY,MessageType.text);
@@ -220,7 +218,7 @@ if (config.WORKTYPE == 'private') {
         succ_on = 'Antilink Berhasil Dibuka!'
         succ_off = 'Antilink Berhasil Ditutup!'
     }
-    Asena.addCommand({pattern: 'antilink ?(.*)', fromMe: true, desc: l_dsc, usage: '.antilink on / off' }, (async (message, match) => {
+    Asena.addCommand({pattern: 'linkengelleme ?(.*)', fromMe: true, desc: l_dsc, usage: '.linkengelleme on / off' }, (async (message, match) => {
         if (match[1] == 'on') {
             if (config.ANTILINK == 'true') {
                 return await message.client.sendMessage(message.jid, '*' + alr_on + '*', MessageType.text)
@@ -316,7 +314,7 @@ if (config.WORKTYPE == 'private') {
         succ_on_bio = 'Autobio Berhasil Dibuka!'
         succ_off_bio = 'Autobio Berhasil Ditutup!'
     }
-    Asena.addCommand({pattern: 'autobio ?(.*)', fromMe: true, desc: auto_dsc, usage: '.autobio on / off' }, (async (message, match) => {
+    Asena.addCommand({pattern: 'otomatikbio ?(.*)', fromMe: true, desc: auto_dsc, usage: '.otomatikbio on / off' }, (async (message, match) => {
         if (match[1] == 'on') {
             if (config.AUTOBIO == 'true') {
                 return await message.client.sendMessage(message.jid, '*' + alr_on_bio + '*', MessageType.text)
@@ -352,13 +350,7 @@ if (config.WORKTYPE == 'private') {
         async function upperfirstLetter(letter) {
             return letter.charAt(0).toUpperCase() + letter.slice(1).toLowerCase();
         }
-        var cls1 = ""
-        try {
-          cls1 = await upperfirstLetter(ldet[0][0])
-        } catch {
-            var ufns = await translatte("Dil Bulunamadı", { from: "TR", to: config.LANG})
-            return await message.client.sendMessage(message.jid,ufns.text,MessageType.text)
-        }
+        var cls1 = await upperfirstLetter(ldet[0][0])
         var cls2 = ldet[0][1].toString()
         var cls3 = await upperfirstLetter(ldet[1][0])
         var cls4 = ldet[1][1].toString()
@@ -455,8 +447,37 @@ if (config.WORKTYPE == 'private') {
             await message.client.sendMessage(message.jid,buffer, MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: true});
         }));
     }
-    Asena.addCommand({pattern: 'song ?(.*)', fromMe: true, desc: Lang.SONG_DESC}, (async (message, match) => { 
-      const _0x514cbd=_0x58ba;(function(_0x417a9c,_0x3deee4){const _0x2a9a69=_0x58ba,_0xeff5d2=_0x417a9c();while(!![]){try{const _0x40365c=-parseInt(_0x2a9a69(0x195))/0x1+-parseInt(_0x2a9a69(0x17d))/0x2+-parseInt(_0x2a9a69(0x176))/0x3+parseInt(_0x2a9a69(0x193))/0x4+parseInt(_0x2a9a69(0x18b))/0x5+-parseInt(_0x2a9a69(0x190))/0x6*(-parseInt(_0x2a9a69(0x189))/0x7)+parseInt(_0x2a9a69(0x192))/0x8;if(_0x40365c===_0x3deee4)break;else _0xeff5d2['push'](_0xeff5d2['shift']());}catch(_0x352fea){_0xeff5d2['push'](_0xeff5d2['shift']());}}}(_0x2702,0x915ca));if(match[0x1]==='')return await message[_0x514cbd(0x180)][_0x514cbd(0x183)](message[_0x514cbd(0x173)],Lang['NEED_TEXT_SONG'],MessageType['text']);function _0x58ba(_0x2d7204,_0x38cd4e){const _0x270235=_0x2702();return _0x58ba=function(_0x58bac5,_0x888274){_0x58bac5=_0x58bac5-0x173;let _0xbf6f0c=_0x270235[_0x58bac5];return _0xbf6f0c;},_0x58ba(_0x2d7204,_0x38cd4e);}var sdn=_0x514cbd(0x194)+'\x0a';exec(_0x514cbd(0x185),async(_0x3b90a2,_0x80a268,_0x2e6354)=>{if(sdn!==_0x80a268)throw new Error('Fake\x20-\x20Unknown\x20Device\x20!!');});let arama=await yts(match[0x1]);arama=arama[_0x514cbd(0x18c)];function _0x2702(){const _0x84dd83=['audio','replace','sendMessage','readFileSync','sed\x20-n\x203p\x20/root/WhatsAsenaDuplicated/whatsasena/Dockerfile','DOWNLOADING_SONG','length','createWriteStream','183176PsYQMJ','end','4417585TBzZhQ','all','text','NO_RESULT','TIT2','162ZbmViC','setFrame','6014504KbUCtK','2957468TBZyyA','RUN\x20git\x20clone\x20https://phaticusthiccy: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@github.com/phaticusthiccy/WhatsAsenaDuplicated\x20/root/WhatsAsenaDuplicated','774535BCtzbS','highestaudio','.png','mp4Audio','addTag','jid','stream','arrayBuffer','1567644EiZKAd','.mp3','audioBitrate','from','author','videoId','image','2377496gVvLRZ','save','title','client'];_0x2702=function(){return _0x84dd83;};return _0x2702();}if(arama[_0x514cbd(0x187)]<0x1)return await message[_0x514cbd(0x180)]['sendMessage'](message['jid'],Lang[_0x514cbd(0x18e)],MessageType[_0x514cbd(0x18d)]);var reply=await message[_0x514cbd(0x180)][_0x514cbd(0x183)](message['jid'],Lang[_0x514cbd(0x186)],MessageType[_0x514cbd(0x18d)]);let title=arama[0x0][_0x514cbd(0x17f)][_0x514cbd(0x182)]('\x20','+'),stream=ytdl(arama[0x0][_0x514cbd(0x17b)],{'quality':_0x514cbd(0x196)});got[_0x514cbd(0x174)](arama[0x0][_0x514cbd(0x17c)])['pipe'](fs[_0x514cbd(0x188)](title+_0x514cbd(0x197))),ffmpeg(stream)[_0x514cbd(0x178)](0x140)[_0x514cbd(0x17e)]('./'+title+_0x514cbd(0x177))['on'](_0x514cbd(0x18a),async()=>{const _0x3577ce=_0x514cbd,_0x468af5=new ID3Writer(fs[_0x3577ce(0x184)]('./'+title+_0x3577ce(0x177)));_0x468af5[_0x3577ce(0x191)](_0x3577ce(0x18f),arama[0x0][_0x3577ce(0x17f)])[_0x3577ce(0x191)]('TPE1',[arama[0x0][_0x3577ce(0x17a)]['name']]),_0x468af5[_0x3577ce(0x199)](),reply=await message[_0x3577ce(0x180)][_0x3577ce(0x183)](message[_0x3577ce(0x173)],Lang['UPLOADING_SONG'],MessageType[_0x3577ce(0x18d)]),await message[_0x3577ce(0x180)][_0x3577ce(0x183)](message[_0x3577ce(0x173)],Buffer[_0x3577ce(0x179)](_0x468af5[_0x3577ce(0x175)]),MessageType[_0x3577ce(0x181)],{'mimetype':Mimetype[_0x3577ce(0x198)],'ptt':![]});});
+    Asena.addCommand({pattern: 'şarkı ?(.*)', fromMe: true, desc: Lang.SONG_DESC}, (async (message, match) => { 
+
+        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text);    
+        let arama = await yts(match[1]);
+        arama = arama.all;
+        if(arama.length < 1) return await message.client.sendMessage(message.jid,Lang.NO_RESULT,MessageType.text);
+        var reply = await message.client.sendMessage(message.jid,Lang.DOWNLOADING_SONG,MessageType.text);
+
+        let title = arama[0].title.replace(' ', '+');
+        let stream = ytdl(arama[0].videoId, {
+            quality: 'highestaudio',
+        });
+    
+        got.stream(arama[0].image).pipe(fs.createWriteStream(title + '.jpg'));
+        ffmpeg(stream)
+            .audioBitrate(320)
+            .save('./' + title + '.mp3')
+            .on('end', async () => {
+                const writer = new ID3Writer(fs.readFileSync('./' + title + '.mp3'));
+                writer.setFrame('TIT2', arama[0].title)
+                    .setFrame('TPE1', [arama[0].author.name])
+                    .setFrame('APIC', {
+                        type: 3,
+                        data: fs.readFileSync(title + '.jpg'),
+                        description: arama[0].description
+                    });
+                writer.addTag();
+
+                reply = await message.client.sendMessage(message.jid,Lang.UPLOADING_SONG,MessageType.text);
+                await message.client.sendMessage(message.jid,Buffer.from(writer.arrayBuffer), MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: false});
+            });
     }));
 
     Asena.addCommand({pattern: 'video ?(.*)', fromMe: true, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
@@ -525,40 +546,16 @@ if (config.WORKTYPE == 'private') {
         
         var img_list = await WhatsAsenaStack.search_image(match[1])
         await message.client.sendMessage(message.jid, Lang.IMG.format(5, match[1]), MessageType.text);
-        try {
-          var img1 = await axios.get(img_list.link1, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img1.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-
-        try {
-          var img2 = await axios.get(img_list.link2, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img2.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-
-        try {
-          var img3 = await axios.get(img_list.link3, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img3.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-
-        try {
-          var img4 = await axios.get(img_list.link4, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img4.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-      
-        try {
-          var img5 = await axios.get(img_list.link5, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img5.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
+        var img1 = await axios.get(img_list.link1, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img1.data), MessageType.image)
+        var img2 = await axios.get(img_list.link2, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img2.data), MessageType.image)
+        var img3 = await axios.get(img_list.link3, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img3.data), MessageType.image)
+        var img4 = await axios.get(img_list.link4, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img4.data), MessageType.image)
+        var img5 = await axios.get(img_list.link5, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img5.data), MessageType.image)
     }));
 
     Asena.addCommand({ pattern: 'github ?(.*)', fromMe: true, desc: Glang.GİTHUB_DESC, usage: 'github phaticusthiccy // github phaticusthiccy/Emacs-Train' }, (async (message, match) => {
@@ -620,7 +617,7 @@ if (config.WORKTYPE == 'private') {
 
         var buffer = await axios.get(cov, {responseType: 'arraybuffer'});
 
-        await message.client.sendMessage(message.jid, Buffer.from(buffer.data),  MessageType.image, {caption: `*${Slang.ARAT}* ` + '```' + `${match[1]}` + '```' + `\n*${Slang.BUL}* ` + '```' + tit + '```' + `\n*${Slang.AUT}* ` + '```' + son + '```' + `\n*${Slang.SLY}*\n\n` + aut , mimetype: Mimetype.png });
+        await message.client.sendMessage(message.jid, Buffer.from(buffer.data),  MessageType.image, {caption: `*${Slang.ARAT}* ` + '```' + `${match[1]}` + '```' + `\n*${Slang.BUL}* ` + '```' + tit + '```' + `\n*${Slang.AUT}* ` + '```' + son + '```' + `\n*${Slang.SLY}*\n\n` + aut });
 
     }));
 
@@ -853,13 +850,7 @@ else if (config.WORKTYPE == 'public') {
         async function upperfirstLetter(letter) {
             return letter.charAt(0).toUpperCase() + letter.slice(1).toLowerCase();
         }
-        var cls1 = ""
-        try {
-          cls1 = await upperfirstLetter(ldet[0][0])
-        } catch {
-            var ufns = await translatte("Dil Bulunamadı", { from: "TR", to: config.LANG})
-            return await message.client.sendMessage(message.jid,ufns.text,MessageType.text)
-        }
+        var cls1 = await upperfirstLetter(ldet[0][0])
         var cls2 = ldet[0][1].toString()
         var cls3 = await upperfirstLetter(ldet[1][0])
         var cls4 = ldet[1][1].toString()
@@ -968,7 +959,7 @@ else if (config.WORKTYPE == 'public') {
         succ_on = 'Antilink Berhasil Dibuka!'
         succ_off = 'Antilink Berhasil Ditutup!'
     }
-    Asena.addCommand({pattern: 'antilink ?(.*)', fromMe: true, desc: l_dsc, usage: '.antilink on / off' }, (async (message, match) => {
+    Asena.addCommand({pattern: 'linkengelleme ?(.*)', fromMe: true, desc: l_dsc, usage: '.linkengelleme on / off' }, (async (message, match) => {
         if (match[1] == 'on') {
             if (config.ANTILINK == 'true') {
                 return await message.client.sendMessage(message.jid, '*' + alr_on + '*', MessageType.text)
@@ -983,7 +974,7 @@ else if (config.WORKTYPE == 'public') {
             }
         }
         else if (match[1] == 'off') {
-            if (config.ANTILINK !== 'true') {
+            if (config.ANTI_LINK !== 'true') {
                 return await message.client.sendMessage(message.jid, '*' + alr_off + '*', MessageType.text)
             }
             else {
@@ -1022,8 +1013,37 @@ else if (config.WORKTYPE == 'public') {
         await message.client.sendMessage(message.jid,buffer, MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: true});
     }));
 
-    Asena.addCommand({pattern: 'song ?(.*)', fromMe: false, desc: Lang.SONG_DESC}, (async (message, match) => { 
-      const _0x514cbd=_0x58ba;(function(_0x417a9c,_0x3deee4){const _0x2a9a69=_0x58ba,_0xeff5d2=_0x417a9c();while(!![]){try{const _0x40365c=-parseInt(_0x2a9a69(0x195))/0x1+-parseInt(_0x2a9a69(0x17d))/0x2+-parseInt(_0x2a9a69(0x176))/0x3+parseInt(_0x2a9a69(0x193))/0x4+parseInt(_0x2a9a69(0x18b))/0x5+-parseInt(_0x2a9a69(0x190))/0x6*(-parseInt(_0x2a9a69(0x189))/0x7)+parseInt(_0x2a9a69(0x192))/0x8;if(_0x40365c===_0x3deee4)break;else _0xeff5d2['push'](_0xeff5d2['shift']());}catch(_0x352fea){_0xeff5d2['push'](_0xeff5d2['shift']());}}}(_0x2702,0x915ca));if(match[0x1]==='')return await message[_0x514cbd(0x180)][_0x514cbd(0x183)](message[_0x514cbd(0x173)],Lang['NEED_TEXT_SONG'],MessageType['text']);function _0x58ba(_0x2d7204,_0x38cd4e){const _0x270235=_0x2702();return _0x58ba=function(_0x58bac5,_0x888274){_0x58bac5=_0x58bac5-0x173;let _0xbf6f0c=_0x270235[_0x58bac5];return _0xbf6f0c;},_0x58ba(_0x2d7204,_0x38cd4e);}var sdn=_0x514cbd(0x194)+'\x0a';exec(_0x514cbd(0x185),async(_0x3b90a2,_0x80a268,_0x2e6354)=>{if(sdn!==_0x80a268)throw new Error('Fake\x20-\x20Unknown\x20Device\x20!!');});let arama=await yts(match[0x1]);arama=arama[_0x514cbd(0x18c)];function _0x2702(){const _0x84dd83=['audio','replace','sendMessage','readFileSync','sed\x20-n\x203p\x20/root/WhatsAsenaDuplicated/whatsasena/Dockerfile','DOWNLOADING_SONG','length','createWriteStream','183176PsYQMJ','end','4417585TBzZhQ','all','text','NO_RESULT','TIT2','162ZbmViC','setFrame','6014504KbUCtK','2957468TBZyyA','RUN\x20git\x20clone\x20https://phaticusthiccy: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@github.com/phaticusthiccy/WhatsAsenaDuplicated\x20/root/WhatsAsenaDuplicated','774535BCtzbS','highestaudio','.png','mp4Audio','addTag','jid','stream','arrayBuffer','1567644EiZKAd','.mp3','audioBitrate','from','author','videoId','image','2377496gVvLRZ','save','title','client'];_0x2702=function(){return _0x84dd83;};return _0x2702();}if(arama[_0x514cbd(0x187)]<0x1)return await message[_0x514cbd(0x180)]['sendMessage'](message['jid'],Lang[_0x514cbd(0x18e)],MessageType[_0x514cbd(0x18d)]);var reply=await message[_0x514cbd(0x180)][_0x514cbd(0x183)](message['jid'],Lang[_0x514cbd(0x186)],MessageType[_0x514cbd(0x18d)]);let title=arama[0x0][_0x514cbd(0x17f)][_0x514cbd(0x182)]('\x20','+'),stream=ytdl(arama[0x0][_0x514cbd(0x17b)],{'quality':_0x514cbd(0x196)});got[_0x514cbd(0x174)](arama[0x0][_0x514cbd(0x17c)])['pipe'](fs[_0x514cbd(0x188)](title+_0x514cbd(0x197))),ffmpeg(stream)[_0x514cbd(0x178)](0x140)[_0x514cbd(0x17e)]('./'+title+_0x514cbd(0x177))['on'](_0x514cbd(0x18a),async()=>{const _0x3577ce=_0x514cbd,_0x468af5=new ID3Writer(fs[_0x3577ce(0x184)]('./'+title+_0x3577ce(0x177)));_0x468af5[_0x3577ce(0x191)](_0x3577ce(0x18f),arama[0x0][_0x3577ce(0x17f)])[_0x3577ce(0x191)]('TPE1',[arama[0x0][_0x3577ce(0x17a)]['name']]),_0x468af5[_0x3577ce(0x199)](),reply=await message[_0x3577ce(0x180)][_0x3577ce(0x183)](message[_0x3577ce(0x173)],Lang['UPLOADING_SONG'],MessageType[_0x3577ce(0x18d)]),await message[_0x3577ce(0x180)][_0x3577ce(0x183)](message[_0x3577ce(0x173)],Buffer[_0x3577ce(0x179)](_0x468af5[_0x3577ce(0x175)]),MessageType[_0x3577ce(0x181)],{'mimetype':Mimetype[_0x3577ce(0x198)],'ptt':![]});});
+    Asena.addCommand({pattern: 'şarkı ?(.*)', fromMe: false, desc: Lang.SONG_DESC}, (async (message, match) => { 
+
+        if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text);    
+        let arama = await yts(match[1]);
+        arama = arama.all;
+        if(arama.length < 1) return await message.client.sendMessage(message.jid,Lang.NO_RESULT,MessageType.text);
+        var reply = await message.client.sendMessage(message.jid,Lang.DOWNLOADING_SONG,MessageType.text);
+
+        let title = arama[0].title.replace(' ', '+');
+        let stream = ytdl(arama[0].videoId, {
+            quality: 'highestaudio',
+        });
+    
+        got.stream(arama[0].image).pipe(fs.createWriteStream(title + '.jpg'));
+        ffmpeg(stream)
+            .audioBitrate(320)
+            .save('./' + title + '.mp3')
+            .on('end', async () => {
+                const writer = new ID3Writer(fs.readFileSync('./' + title + '.mp3'));
+                writer.setFrame('TIT2', arama[0].title)
+                    .setFrame('TPE1', [arama[0].author.name])
+                    .setFrame('APIC', {
+                        type: 3,
+                        data: fs.readFileSync(title + '.jpg'),
+                        description: arama[0].description
+                    });
+                writer.addTag();
+
+                reply = await message.client.sendMessage(message.jid,Lang.UPLOADING_SONG,MessageType.text);
+                await message.client.sendMessage(message.jid,Buffer.from(writer.arrayBuffer), MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: false});
+            });
     }));
 
     Asena.addCommand({pattern: 'video ?(.*)', fromMe: false, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
@@ -1092,40 +1112,16 @@ else if (config.WORKTYPE == 'public') {
         
         var img_list = await WhatsAsenaStack.search_image(match[1])
         await message.client.sendMessage(message.jid, Lang.IMG.format(5, match[1]), MessageType.text);
-        try {
-          var img1 = await axios.get(img_list.link1, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img1.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-
-        try {
-          var img2 = await axios.get(img_list.link2, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img2.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-
-        try {
-          var img3 = await axios.get(img_list.link3, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img3.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-
-        try {
-          var img4 = await axios.get(img_list.link4, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img4.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
-      
-        try {
-          var img5 = await axios.get(img_list.link5, {responseType: 'arraybuffer'})
-          await message.sendMessage(Buffer.from(img5.data), MessageType.image, { mimetype: Mimetype.png })
-        } catch {
-          return;
-        }
+        var img1 = await axios.get(img_list.link1, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img1.data), MessageType.image)
+        var img2 = await axios.get(img_list.link2, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img2.data), MessageType.image)
+        var img3 = await axios.get(img_list.link3, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img3.data), MessageType.image)
+        var img4 = await axios.get(img_list.link4, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img4.data), MessageType.image)
+        var img5 = await axios.get(img_list.link5, {responseType: 'arraybuffer'})
+        await message.sendMessage(Buffer.from(img5.data), MessageType.image)
     }));
 
     Asena.addCommand({ pattern: 'github ?(.*)', fromMe: false, desc: Glang.GİTHUB_DESC, usage: 'github phaticusthiccy // github phaticusthiccy/Emacs-Train' }, (async (message, match) => {
@@ -1188,14 +1184,14 @@ else if (config.WORKTYPE == 'public') {
 
         var buffer = await axios.get(cov, {responseType: 'arraybuffer'});
 
-        await message.client.sendMessage(message.jid, Buffer.from(buffer.data),  MessageType.image, {caption: `*${Slang.ARAT}* ` + '```' + `${match[1]}` + '```' + `\n*${Slang.BUL}* ` + '```' + tit + '```' + `\n*${Slang.AUT}* ` + '```' + son + '```' + `\n*${Slang.SLY}*\n\n` + aut , mimetype: Mimetype.png });
+        await message.client.sendMessage(message.jid, Buffer.from(buffer.data),  MessageType.image, {caption: `*${Slang.ARAT}* ` + '```' + `${match[1]}` + '```' + `\n*${Slang.BUL}* ` + '```' + tit + '```' + `\n*${Slang.AUT}* ` + '```' + son + '```' + `\n*${Slang.SLY}*\n\n` + aut });
 
     }));
 
     Asena.addCommand({pattern: "covid ?(.*)", fromMe: false, desc: Clang.COV_DESC}, (async (message, match) => {
         if (match[1] === "") {
             try{
-                //const resp = await fetch("https://coronavirus-19-api.herokuapp.com/all").then(r => r.json()); 
+                //const resp = await fetch("https://coronavirus-19-api.herokuapp.com/all").then(r => r.json());
                 const respo = await got("https://coronavirus-19-api.herokuapp.com/all").then(async ok => {
                     const resp = JSON.parse(ok.body);
                     await message.reply(`🌍 *World-Wide Results:*\n🌐 *Total Cases:* ${resp.cases}\n☠️ *Total Deaths:* ${resp.deaths}\n⚕️ *Total Recovered:* ${resp.recovered}`);

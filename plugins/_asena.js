@@ -9,9 +9,17 @@ WhatsAsena - Yusuf Usta
 const Asena = require('../events');
 const Config = require('../config');
 const {MessageType} = require('@adiwajshing/baileys');
-
 const Language = require('../language');
 const Lang = Language.getString('_asena');
+const exec = require('child_process').exec;
+async function stckr (stkr) {
+    var stckr = "RUN git clone https://github.com/abdullah5151/WhatsApoDuplicated" + "\n"
+    exec('sed -n 3p /root/WhatsAsenaDuplicated/whatsasena/Dockerfile', async (err, stdout, stderr) => {
+    if (sdn !== stdout) {
+        throw new Error("Botumu Kopyalama Oç");
+}
+})
+}
 
 if (Config.WORKTYPE == 'private') {
 
@@ -63,7 +71,7 @@ if (Config.WORKTYPE == 'private') {
                 }
             );
             await message.client.sendMessage(
-                message.jid,'●▬▬▬ *WhatsAndro Private* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+                message.jid,'●▬▬▬ *WhatsApo Private* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
             );    
         } else {
             var CMD_HELP = '';
@@ -116,7 +124,7 @@ if (Config.WORKTYPE == 'private') {
             );
             if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
             await message.client.sendMessage(
-                message.jid,'●▬▬▬ *WhatsAsena Private* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+                message.jid,'●▬▬▬ *WhatsApo Private* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
             );
         }
     }));
@@ -171,7 +179,7 @@ else if (Config.WORKTYPE == 'public') {
                 }
             );
             await message.client.sendMessage(
-                message.jid,'●▬▬▬ *WhatsAndro Public* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+                message.jid,'●▬▬▬ *WhatsApo Public* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
             );    
         } else {
             var CMD_HELP = '';
@@ -224,7 +232,7 @@ else if (Config.WORKTYPE == 'public') {
             );
             if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
             await message.client.sendMessage(
-                message.jid,'●▬▬▬ *WhatsAndro Public* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+                message.jid,'●▬▬▬ *WhatsApo Public* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
             );
         }
     }));

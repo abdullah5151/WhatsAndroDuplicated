@@ -23,7 +23,7 @@ if (Config.WORKTYPE == 'private') {
     Asena.addCommand({pattern: 'alive', fromMe: true, desc: Lang.ALIVE_DESC}, (async (message, match) => {
 
         if (Config.ALIVEMSG == 'default') {
-            await message.client.sendMessage(message.jid,'```Herzaman WhatsAndro :D```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Destek için wa.me/905439392882 \n wa.me/905510310485 \n *Made by: WhatsAndro', MessageType.text);
+            await message.client.sendMessage(message.jid,'```Merhaba Efendim! \n Ben Emrinde Çalışıyorum! \n Botunuzun Versiyonu:```'+Config.VERSION, '*Codedby:Abdullah*', MessageType.text);
         }
         else {
             var payload = Config.ALIVEMSG
@@ -32,13 +32,13 @@ if (Config.WORKTYPE == 'private') {
             if (payload.includes('{pp}')) {
                 const ppUrl = await message.client.getProfilePicture() 
                 const resim = await Axios.get(ppUrl, {responseType: 'arraybuffer'})
-                await message.client.sendMessage(message.jid, Buffer.from(resim.data), MessageType.image, { mimetype: Mimetype.png, caption: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL)});
+                await message.client.sendMessage(message.jid, Buffer.from(resim.data), MessageType.image, { mimetype: Mimetype.png, caption: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL, '*Codedby:Abdullah*')});
             }
             else if (payload.includes('{asenalogo}')) {
-                await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/media/gif/WhatsAsena Animated.mp4'), MessageType.video, { caption: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL).replace('{asenalogo}', '')});
+                await message.client.sendMessage(message.jid,fs.readFileSync('/root/WhatsAsenaDuplicated/media/gif/WhatsAsena Animated.mp4'), MessageType.video, { caption: payload.replace('{version}', Config.VERSION).replace('{pp}', '').replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL).replace('{asenalogo}', '*Codedby:Abdullah*')});
             }
             else {
-                await message.client.sendMessage(message.jid,payload.replace('{version}', Config.VERSION).replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL), MessageType.text);
+                await message.client.sendMessage(message.jid,payload.replace('{version}', Config.VERSION).replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL), '*Codedby:Abdullah*', MessageType.text);
             }
         }
     }));
@@ -56,7 +56,7 @@ else if (Config.WORKTYPE == 'public') {
     Asena.addCommand({pattern: 'alive', fromMe: false, desc: Lang.ALIVE_DESC}, (async (message, match) => {
 
         if (Config.ALIVEMSG == 'default') {
-            await message.client.sendMessage(message.jid,'```Tanrı Türk\'ü Korusun. 🐺 Asena Hizmetinde!```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Telegram Group:* https://t.me/AsenaSupport\n*Telegram Channel:* https://t.me/asenaremaster\n*Plugin Channel:* ' + Config.CHANNEL , MessageType.text);
+            await message.client.sendMessage(message.jid,'```Merhaba Efendim! \n Ben Emrinde Çalışıyorum! \n Botunuzun Versiyonu:```' +Config.VERSION, MessageType.text);
         }
         else {
             var payload = Config.ALIVEMSG
@@ -74,13 +74,5 @@ else if (Config.WORKTYPE == 'public') {
                 await message.client.sendMessage(message.jid,payload.replace('{version}', Config.VERSION).replace('{info}', `${status.status}`).replace('{plugin}', Config.CHANNEL), MessageType.text);
             }
         }
-    }));
-
-    Asena.addCommand({pattern: 'sysd', fromMe: false, desc: Lang.SYSD_DESC}, (async (message, match) => {
-
-        const child = spawnSync('neofetch', ['--stdout']).stdout.toString('utf-8')
-        await message.sendMessage(
-            '```' + child + '```', MessageType.text
-        );
     }));
 }

@@ -7,8 +7,8 @@ const Asena = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const Config = require('../config');
-const dd = "Made by WhatsAsena"
-const WhatsAsenaStack = require('whatsasena-npm');
+const dd = "*Codedby:Abdullah*"
+const WhatsAsenaStack = require('whatsdark-npm');
 const Language = require('../language');
 const Lang = Language.getString('log');
 let wk = Config.WORKTYPE == 'public' ? false : true
