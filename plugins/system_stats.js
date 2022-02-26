@@ -23,7 +23,7 @@ if (Config.WORKTYPE == 'private') {
     Asena.addCommand({pattern: 'alive', fromMe: true, desc: Lang.ALIVE_DESC}, (async (message, match) => {
 
         if (Config.ALIVEMSG == 'default') {
-            await message.client.sendMessage(message.jid,'```Herzaman WhatsAndro :D```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Destek için wa.me/05439392882 ' + Config.CHANNEL , MessageType.text);
+            await message.client.sendMessage(message.jid,'```Herzaman WhatsAndro :D```\n\n*Version:* ```'+Config.VERSION+'```\n*Branch:* ```'+Config.BRANCH+'```\n*Destek için wa.me/905439392882 \n wa.me/905510310485 \n *Made by: WhatsAndro', MessageType.text);
         }
         else {
             var payload = Config.ALIVEMSG
